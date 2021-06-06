@@ -34,6 +34,12 @@ void GameScene::onUpdate() {
 	int old_score = 0;		//用于捕获旧的分数
 	int new_score = 0;		//用于捕获新的分数
 	//if (非暂停)
+	//如果是死局
+	if (this->gt->getDeadlock())
+	{
+		printf("Deadlock");
+		this->WashJews();
+	}
 	if (GameScene::selected_jewels_numbers == 2)// 如果选中2个棋子
 	{
 		int a = 0, b = 0, flag = 0;
@@ -226,6 +232,32 @@ void GameScene::minu_selected_jewels_numbers()
 	selected_jewels_numbers--;
 }
 
+void GameScene::WashJews()
+{
+	printf("Washing...\n");
+	int** new_map = this->gt->getNewState();
+	for (int i = MAPROWNUM - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < MAPCOLNUM; j++)
+		{
+			GameScene::map[i][j]->Break();
+			this->removeChild(GameScene::map[i][j]);
+			GameScene::map[i][j] = nullptr;
+			auto jew = new Jewel(new_map[i][j]);//根据map生成不同图像图片
+			jew->pos_row = 30.0f + 36.25f + 72.5f * (float)(-1);
+			jew->pos_col = 414.0f + 36.25f + 72.5f * (float)(j);
+			jew->setScale(0.8f);
+			jew->setPosX(jew->pos_col);
+			jew->setPosY(jew->pos_row);
+			jew->setVisible(true);
+			this->addChild(jew);
+			jew->Fall(i + 1);
+			GameScene::map[i][j] = jew;
+		}
+	}
+	printf("Washing OK!\n");
+}
+
 void GameScene::Initialize()
 {
 	//游戏背景
@@ -260,6 +292,10 @@ void GameScene::Initialize()
 	this->hint_btn->setVisible(true);
 	//设置提示按钮回调函数
 	this->hint_btn->setClickFunc([&]() {
+		if (this->gt->getDeadlock())
+		{
+			return;
+		}
 		//获取可以调换的两个宝石位置
 		int *idea = gt->getHint();
 		int row1 = idea[0];
@@ -293,5 +329,13 @@ void GameScene::Initialize()
 	this->score_board->setPos(30, 35);
 	this->score_board->setVisible(true);
 	this->addChild(this->score_board);
+
+	////洗牌按钮
+	//WashButton *wb = gcnew WashButton();
+	//wb->setPos(70, 135);
+	//wb->setClickFunc([&]() {
+	//	this->WashJews();
+	//	});
+	//this->addChild(wb);
 }
 

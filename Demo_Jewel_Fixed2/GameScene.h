@@ -3,6 +3,7 @@
 #include "GameTask.h"
 #include "HintButton.h"
 #include "ScoreBoard.h"
+#include "WashButton.h"
 #include <mutex>
 using namespace easy2d;
 
@@ -23,7 +24,8 @@ public:
 	GameTask* gt;
 	HintButton* hint_btn;
 	ScoreBoard* score_board;
-
+	//²âÊÔÏ´ÅÆµÄº¯Êý
+	void WashJews();
 protected:
 	static int selected_jewels_numbers;
 	void Initialize();

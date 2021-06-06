@@ -148,6 +148,7 @@
     <ClInclude Include="QNumber.h" />
     <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="WashButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="QNumber.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="WashButton.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
