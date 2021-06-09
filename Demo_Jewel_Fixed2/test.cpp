@@ -12,7 +12,7 @@ int main()
 		// 修改节点默认中心点，便于让图片居中显示
 		Node::setDefaultAnchor(0.5f, 0.5f);
 		//动画界面（默认为第一关）
-		auto scene = new GameScene(5);
+		auto scene = new GameScene(1, Mode::Fast);
 		SceneManager::enter(scene);
 
 		

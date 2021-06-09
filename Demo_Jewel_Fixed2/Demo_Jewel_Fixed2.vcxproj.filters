@@ -45,6 +45,18 @@
     <ClInclude Include="WashButton.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GameMask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SubMenu.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStatus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp">
@@ -75,6 +87,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="WashButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SubMenu.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -163,6 +163,10 @@ void GameTask::mapcpy(int** dist, int** src)
 		}
 	}
 }
+void GameTask::initGrade()
+{
+	this->curGrade = 0;
+}
 //Îö¹¹º¯Êı
 GameTask::~GameTask() {
 	delete gl;

@@ -14,6 +14,7 @@ public:
 	int* getHint();//返回提示中两个宝石的坐标信息
 	GameLogic* getLogic();//返回GameLogic对象
 	static void mapcpy(int** dist, int** src);
+	void initGrade();
 private:
 	int level = 0;//当前关卡数，范围为1-6
 	int step = 0;//用户当前所走步数

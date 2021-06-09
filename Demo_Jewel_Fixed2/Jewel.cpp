@@ -9,16 +9,16 @@
 #define WAITTIME 0.8f
 
 
-void Jewel::wait_for_a_while()
-{
-	float secs = WAITTIME;
-	clock_t delay = secs * CLOCKS_PER_SEC;
-	clock_t start = clock();
-	//printf("Waiting...\n");
-	while (clock() - start < delay);
-	//printf("OK\n");
-	return;
-}
+//void Jewel::wait_for_a_while()
+//{
+//	float secs = WAITTIME;
+//	clock_t delay = secs * CLOCKS_PER_SEC;
+//	clock_t start = clock();
+//	//printf("Waiting...\n");
+//	while (clock() - start < delay);
+//	//printf("OK\n");
+//	return;
+//}
 
 
 Jewel::Jewel()
@@ -78,6 +78,10 @@ Jewel::Jewel(const Jewel& obj)
 
 void Jewel::Select()
 {
+	if (!this)
+	{
+		return;
+	}
 	// 获取按钮状态
 	if (!isSelected)
 	{
@@ -93,9 +97,11 @@ void Jewel::Select()
 	}
 	// 保存信息到文件
 	Data::saveBool(L"isSelected", isSelected);
+	
 }
 
-void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2, double delay, bool ifReturn)
+
+void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2, float delay, bool ifReturn)
 {
 	//创建右移动画
 	auto moveRight = gcnew MoveBy(INTERTIME, Vector2(GRID_LENGTH, 0));
@@ -155,17 +161,7 @@ void Jewel::Exchange(Jewel* jewel1, Jewel* jewel2, double delay, bool ifReturn)
 	jewel1->border->setVisible(false);
 	jewel2->border->setVisible(false);
 	//wait_for_a_while();
-}
-
-//void Jewel::Fall(Jewel* jewel, double delay,int distance)
-//{
-//	//创建一个下落动画
-//	auto flash = gcnew MoveBy(0.0f, Vector2(0, -80.0 * distance));//向上瞬移
-//	auto fallTo = gcnew MoveBy(0.2f, Vector2(0, 80.0*distance));//向下掉落
-//	auto delay1 = gcnew Delay(delay);
-//	auto sequence1 = gcnew Sequence({ flash->clone(),delay1->clone(),fallTo });
-//	jewel->runAction(sequence1);
-//}																																																																																																
+}																																																																																							
 
 
 
@@ -176,6 +172,7 @@ void Jewel::Fall(int fall_grids)
 	auto delay = gcnew Delay(0.3f);
 	auto resume = gcnew CallFunc([]() {
 		GameScene::canResume = true;
+		GameScene::SetBtnEnabled(true);//动画播放结束后将所有按钮恢复可点击
 		});
 	this->runAction(gcnew Sequence({ delay, fallTo, delay, resume }));
 	printf("%d falls\n", this->pic_num);

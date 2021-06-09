@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,25 +141,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameMask.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameStatus.h" />
     <ClInclude Include="GameTask.h" />
     <ClInclude Include="HIntButton.h" />
     <ClInclude Include="Jewel.h" />
     <ClInclude Include="MatrixNode.h" />
     <ClInclude Include="QNumber.h" />
     <ClInclude Include="ScoreBoard.h" />
+    <ClInclude Include="SubMenu.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="WashButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameMask.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameStatus.cpp" />
     <ClCompile Include="GameTask.cpp" />
     <ClCompile Include="HIntButton.cpp" />
     <ClCompile Include="Jewel.cpp" />
     <ClCompile Include="MatrixNode.cpp" />
     <ClCompile Include="QNumber.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
+    <ClCompile Include="SubMenu.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="WashButton.cpp" />
   </ItemGroup>
